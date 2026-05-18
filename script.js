@@ -2,13 +2,11 @@
 document.addEventListener('DOMContentLoaded', () => {
     // Check if GSAP is available
     if (typeof gsap !== 'undefined') {
-        // Basic GSAP Entrance Animations for Hero
+        // Basic GSAP Entrance Animations for Hero (excluding elements with CSS transitions to avoid clashes)
         const animTargets = [
-            { el: ".logo, .nav-links li, .btn-nav", props: { y: -20, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" } },
+            { el: ".logo, .nav-links li", props: { y: -20, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power3.out" } },
             { el: ".greeting, .name, .title", props: { x: -30, opacity: 0, duration: 1, stagger: 0.2, delay: 0.3, ease: "power3.out" } },
-            { el: ".social-icons a, .action-buttons a", props: { y: 20, opacity: 0, duration: 0.8, stagger: 0.1, delay: 0.8, ease: "power3.out" } },
-            { el: ".stats", props: { y: 30, opacity: 0, duration: 1, delay: 1.2, ease: "power3.out" } },
-            { el: ".image-container", props: { scale: 0.8, opacity: 0, duration: 1.2, delay: 0.6, ease: "power3.out" } }
+            { el: ".stats", props: { y: 30, opacity: 0, duration: 1, delay: 0.8, ease: "power3.out" } }
         ];
 
         animTargets.forEach(target => {

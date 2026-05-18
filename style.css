@@ -5,12 +5,17 @@
     font-family: 'Poppins', sans-serif;
 }
 
-body {
+html, body {
     background-color: #1a1a1a;
     color: #ffffff;
     height: 100vh;
     overflow: hidden;
     position: relative;
+    cursor: default !important;
+}
+
+a, button, .nav-links li a, .btn-nav, .btn-primary, .btn-secondary, .social-icons a {
+    cursor: pointer !important;
 }
 
 /* Background Shapes */
@@ -184,10 +189,10 @@ body {
 }
 
 .social-icons a:hover {
-    border-color: #d1d1d1;
-    color: #d1d1d1;
+    border-color: #ff6600;
+    color: #ff6600;
     transform: translateY(-3px);
-    box-shadow: 0 5px 15px rgba(255,102,0,0.2);
+    box-shadow: 0 5px 15px rgba(255,102,0,0.3);
 }
 
 /* Action Buttons */
@@ -274,8 +279,12 @@ body {
 }
 
 .image-container {
-    width: 450px;
-    height: 450px;
+    width: 32vw;
+    height: 32vw;
+    max-width: 420px;
+    max-height: 420px;
+    min-width: 280px;
+    min-height: 280px;
     background-color: #262626;
     border-radius: 50%;
     overflow: hidden;
@@ -559,8 +568,8 @@ body {
         font-size: 3rem;
     }
     .image-container {
-        width: 350px;
-        height: 350px;
+        width: min(350px, 70vw);
+        height: min(350px, 70vw);
     }
     .nav-links {
         display: none; /* simple mobile nav */

@@ -108,6 +108,7 @@ a, button, .nav-links li a, .btn-nav, .btn-primary, .btn-secondary, .social-icon
 
 /* SCROLLABLE CONTENT AREA */
 .content-area {
+    position: relative;
     flex: 1;
     overflow-y: auto;
     overflow-x: hidden;

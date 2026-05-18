@@ -1,5 +1,7 @@
 // Wait for the DOM to load
 document.addEventListener('DOMContentLoaded', () => {
+    const scrollArea = document.getElementById('scroll-area');
+    
     // Check if GSAP is available
     if (typeof gsap !== 'undefined') {
         // Basic GSAP Entrance Animations for Hero (excluding elements with CSS transitions to avoid clashes)
@@ -16,10 +18,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Global Scroll Function to scroll only the container (never the body window)
+    window.scrollToSection = (selector) => {
+        const scrollArea = document.getElementById('scroll-area');
+        const target = document.querySelector(selector);
+        if (scrollArea && target) {
+            scrollArea.scrollTo({
+                top: target.offsetTop,
+                behavior: 'smooth'
+            });
+        }
+    };
+
     // Smooth Scrolling for Navigation inside the content-area
     const navLinks = document.querySelectorAll('.nav-links a');
-    const scrollArea = document.getElementById('scroll-area');
-
     if (navLinks.length > 0) {
         navLinks.forEach(link => {
             link.addEventListener('click', function(e) {
@@ -32,21 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     // Add to clicked
                     this.classList.add('active');
 
-                    const targetSection = document.querySelector(href);
-                    if (targetSection) {
-                        if (scrollArea) {
-                            targetSection.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        } else {
-                            // Standard window scroll fallback
-                            const offsetTop = targetSection.offsetTop;
-                            window.scrollTo({
-                                top: offsetTop - 80,
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
+                    scrollToSection(href);
                 }
             });
         });
